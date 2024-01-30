@@ -7,6 +7,8 @@ import {
 		Checkbox
 } from "@material-ui/core"
 
+import {Paper, List} from "@material-ui/core"
+
 //react 에서 컴포넌트 클래스를 만들기 위해서 component로 부터 상속을 받기
 class ToDo extends React.Component{
 	//생성자

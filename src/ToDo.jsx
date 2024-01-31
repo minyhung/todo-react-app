@@ -4,8 +4,13 @@ import {
 		ListItem,
 		ListItemText,
 		InputBase,
-		Checkbox
+		Checkbox,
+		ListItemSecondaryAction,
+		IconButton
 } from "@material-ui/core"
+
+
+import DeleteOutlined from "@material-ui/icons/DeleteOutlined"
 
 import {Paper, List} from "@material-ui/core"
 
@@ -15,7 +20,8 @@ class ToDo extends React.Component{
 	constructor(props){
 		//App.js에서 넘겨준 속성들은 자신의 props에 저장
 		//this.props.item이라는 속성에 앞에서 전달한 데이터를 저장
-	
+
+
 		super(props);  // 상위 클래스에서 넘겨준 모든 props를 현재 클래스에 저장
 		//state 생성 
 		//item이라는 이름으로 props 중에서 item이라는 값을 state로 저장
@@ -24,8 +30,14 @@ class ToDo extends React.Component{
 		//state로 변환해야합니다.
 
 		this.state = {item:this.props.item}
-	}
 
+		this.delete = this.props.delete
+
+	}
+	//삭제 버튼을 누를 때 호출될 이벤트 핸들러
+	deleteEventHandler = (e) =>{
+		this.delete(this.state.item)
+	}
 
 	//화면에 출력할 내용을 리턴하는 메서드
 
@@ -46,6 +58,11 @@ class ToDo extends React.Component{
 						fullwidth={true}
 					/>
 				</ListItemText>
+				<ListItemSecondaryAction>
+					<IconButton aria-label="Delete ToDo" onClick={this.deleteEventHandler}>
+						<DeleteOutlined />
+					</IconButton>
+				</ListItemSecondaryAction>
 			</ListItem>
 		)
 	}
